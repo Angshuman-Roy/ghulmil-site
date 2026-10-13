@@ -1,0 +1,72 @@
+/* Shared styles for the Ghulmil public pages. Colours match the app. */
+:root {
+  --bg: #f4f1ea;
+  --ink: #14181f;
+  --muted: rgba(20, 24, 31, 0.55);
+  --body: rgba(20, 24, 31, 0.8);
+  --rule: rgba(20, 24, 31, 0.1);
+  --accent: #ff5a1f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181f;
+    --ink: #f4f1ea;
+    --muted: rgba(244, 241, 234, 0.55);
+    --body: rgba(244, 241, 234, 0.82);
+    --rule: rgba(244, 241, 234, 0.12);
+    --accent: #ff7a45;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font: 400 16px/1.7 "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+}
+
+.brand {
+  font: 800 16px/1 "Bricolage Grotesque", system-ui, sans-serif;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+h1, h2 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(30px, 7vw, 40px); line-height: 1.1; margin: 12px 0 6px; }
+h2 { font-size: 21px; line-height: 1.25; margin: 0 0 10px; }
+
+.updated { margin: 0; font-size: 14px; color: var(--muted); }
+.intro { font-size: 17px; margin-top: 24px; }
+
+section { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--rule); }
+
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 22px; }
+li { margin-bottom: 6px; }
+strong { color: var(--ink); font-weight: 600; }
+a { color: var(--accent); text-underline-offset: 2px; overflow-wrap: anywhere; }
+
+.links { list-style: none; padding: 0; margin-top: 28px; }
+.links li { margin-bottom: 10px; }
+.links a { font-weight: 600; font-size: 17px; }
+
+footer { margin-top: 48px; font-size: 13px; color: var(--muted); }

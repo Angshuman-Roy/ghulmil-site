@@ -4,27 +4,174 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ghulmil</title>
-  <meta name="description" content="Find people nearby for football, chess, walks, jam sessions and more.">
+  <meta name="description" content="Find people nearby for football, chess, walks, jam sessions and more, or host your own.">
+  <meta name="theme-color" content="#14181f">
   <link rel="icon" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Schibsted+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body>
-<main>
-  <span class="brand">ghulmil</span>
-  <h1>Your people are nearby.</h1>
-  <p class="intro">Find people near you for football, chess, walks, jam sessions and more, or host your own.</p>
+<body class="home">
 
-  <ul class="links">
-    <li><a href="guidelines.html">Community Guidelines</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="child-safety.html">Child Safety Standards</a></li>
-    <li>Contact support: <a href="mailto:support@ghulmil.app">support@ghulmil.app</a></li>
-  </ul>
+<header class="hero">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <img class="wordmark" src="wordmark-white.png" alt="ghulmil" width="132" height="40">
+
+    <div class="stage run" id="stage" aria-hidden="true">
+      <span class="play cricket on">
+        <span class="word">cricket</span>
+        <span class="sprite ball"></span>
+      </span>
+      <span class="play chess">
+        <span class="word">chess</span>
+        <span class="sprite knight">♞</span>
+      </span>
+      <span class="play reading">
+        <span class="word">reading</span>
+      </span>
+      <span class="play football">
+        <span>f</span><span class="balls"><span class="fb">⚽</span><span class="fb">⚽</span></span><span>tball</span>
+      </span>
+      <span class="play yoga">
+        <span class="word"><span style="--i:0">y</span><span style="--i:1">o</span><span style="--i:2">g</span><span style="--i:3">a</span></span>
+      </span>
+    </div>
+
+    <h1>Your people are nearby.</h1>
+    <p class="lede">Football at 7? Chess on Sunday? Join a plan nearby, or start your own.</p>
+
+    <a class="store" id="get-app" aria-disabled="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+      <span><small id="get-app-label">Coming soon to</small><strong>Google Play</strong></span>
+    </a>
+  </div>
+</header>
+
+<div class="sheet">
+<main>
+  <div class="reveal">
+    <p class="eyebrow">How it works</p>
+    <h2>From “koi plan hai?” to showing up.</h2>
+  </div>
+
+  <ol class="steps">
+    <li class="reveal">
+      <span class="tile" style="background:#ffe3d6">🏏</span>
+      <div>
+        <h3>Find a plan nearby</h3>
+        <p>Cricket, treks, board games, chai walks: see what's happening around you.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="tile" style="background:#fff0d6">☕</span>
+      <div>
+        <h3>Ask to join</h3>
+        <p>The host sees who you are and lets you in. You'll get a ping when you're in.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="tile" style="background:#d8f3ef">♟️</span>
+      <div>
+        <h3>Show up and meet your people</h3>
+        <p>Check in when you get there, then keep the chat going in the plan's feed.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="tile" style="background:#dfe8ff">📚</span>
+      <div>
+        <h3>Or host your own</h3>
+        <p>Pick the time and place, set how many can come, and choose who joins.</p>
+      </div>
+    </li>
+  </ol>
+
+  <section class="reveal">
+    <h2>Made for meeting safely</h2>
+    <ul>
+      <li><strong>Verified profiles.</strong> A blue tick means the selfie and email have been checked.</li>
+      <li><strong>Hosts decide who joins.</strong> Nobody lands in your plan uninvited.</li>
+      <li><strong>Report and block</strong> anyone, from their profile, at any time.</li>
+      <li><strong>18+ only.</strong></li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <ul class="links">
+      <li><a href="guidelines.html">Community Guidelines</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="child-safety.html">Child Safety Standards</a></li>
+      <li>Contact support: <a href="mailto:support@ghulmil.app">support@ghulmil.app</a></li>
+    </ul>
+  </section>
 
   <footer>© 2026 ghulmil</footer>
 </main>
+</div>
+
+<script>
+  // Paste the Play Store link here once the app is live, e.g.
+  // "https://play.google.com/store/apps/details?id=com.ghulmil.app"
+  const PLAY_STORE_URL = "";
+
+  if (PLAY_STORE_URL) {
+    const btn = document.getElementById("get-app");
+    btn.href = PLAY_STORE_URL;
+    btn.removeAttribute("aria-disabled");
+    document.getElementById("get-app-label").textContent = "Get it on";
+  }
+
+  // Drifting word wall (same rows, colours and speeds as the app).
+  const ROWS = [
+    { words: ["cricket", "book club", "trek", "jam session", "badminton", "chai walk"], speed: 26 },
+    { words: ["chess", "football", "board games", "yoga", "cycling", "sketching"], speed: 20, reverse: true },
+    { words: ["reading", "turf 5s", "photo walk", "pickleball", "karaoke", "run club"], speed: 30 },
+    { words: ["coding", "carrom", "sunset hike", "salsa", "quiz night", "kabaddi"], speed: 22, reverse: true },
+  ];
+  const tone = (r, w) => ((r + w) % 5 === 0 ? " lit-orange" : (r * 2 + w) % 7 === 0 ? " lit-green" : "");
+  const wall = document.getElementById("wall");
+  const rows = ROWS.map((row, r) => {
+    const copy = '<span class="wall-copy">' + row.words.map((word, w) =>
+      `<span class="wall-word${tone(r, w)}">${word}<span class="wall-dot"> · </span></span>`).join("") + "</span>";
+    const el = document.createElement("div");
+    el.className = "wall-row" + (row.reverse ? " reverse" : "");
+    el.innerHTML = copy + copy;
+    wall.appendChild(el);
+    return { el, speed: row.speed };
+  });
+  // Each row slides one copy's width per loop, at the row's speed in px/s.
+  const sizeRows = () => rows.forEach(({ el, speed }) => {
+    el.style.animationDuration = el.firstChild.offsetWidth / speed + "s";
+  });
+  sizeRows();
+  document.fonts && document.fonts.ready.then(sizeRows);
+  addEventListener("resize", sizeRows);
+
+  // Playing words: each one acts itself out, then hands over to the next.
+  const stage = document.getElementById("stage");
+  const plays = stage.querySelectorAll(".play");
+  let current = 0;
+  stage.addEventListener("animationend", (e) => {
+    if (e.target !== stage) return;
+    plays[current].classList.remove("on");
+    current = (current + 1) % plays.length;
+    plays[current].classList.add("on");
+    stage.classList.remove("run");
+    void stage.offsetWidth; // restart the fade
+    stage.classList.add("run");
+  });
+
+  // Blocks fade up as they scroll into view.
+  const io = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 70 + "ms";
+    io.observe(el);
+  });
+</script>
 </body>
 </html>

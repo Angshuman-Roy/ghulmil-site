@@ -1,0 +1,311 @@
+/* Landing page only. The hero is a port of the app's sign-in screen
+   (components/signin/ActivityWall.tsx and PlayingWords.tsx). */
+:root {
+  --ink-solid: #14181f;
+  --cream: #f4f1ea;
+  --card: #f4f1ea;
+  --tile-shadow: 0 4px 12px rgba(20, 24, 31, 0.09);
+  --play: 2.6s;
+  --word: 58px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card: #1b2029;
+    --tile-shadow: none;
+  }
+}
+
+body.home { background: var(--ink-solid); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 44px 16px 84px;
+  color: var(--cream);
+  text-align: center;
+}
+
+.hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+
+.wordmark { display: block; width: 132px; height: auto; margin: 0 auto; }
+
+.hero h1 {
+  color: var(--cream);
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin: 14px 0 0;
+}
+
+.hero .lede {
+  max-width: 420px;
+  margin: 12px auto 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(244, 241, 234, 0.62);
+}
+
+/* Drifting activity words behind the hero. */
+.wall {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wall-row { display: flex; width: max-content; animation: drift linear infinite; }
+.wall-row.reverse { animation-direction: reverse; }
+.wall-copy { display: flex; white-space: nowrap; }
+
+.wall-word {
+  font: 800 46px/56px "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: -1.2px;
+  color: rgba(244, 241, 234, 0.09);
+}
+.wall-word.lit-orange { color: rgba(255, 90, 31, 0.26); }
+.wall-word.lit-green { color: rgba(31, 164, 99, 0.26); }
+.wall-dot { color: rgba(255, 90, 31, 0.35); }
+
+@keyframes drift { to { transform: translateX(-50%); } }
+
+/* Fades the wall into solid ink at the top and bottom. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(var(--ink-solid), rgba(20, 24, 31, 0) 22%, rgba(20, 24, 31, 0) 75%, var(--ink-solid));
+}
+.hero-inner { z-index: 1; }
+
+/* A soft pool of ink behind the text so the headline never fights the wall. */
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 4% -26%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(20, 24, 31, 0.94) 45%, rgba(20, 24, 31, 0));
+}
+
+/* ---------- Playing words ---------- */
+
+.stage {
+  position: relative;
+  height: 130px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 var(--word)/1.15 "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: -1.6px;
+  color: var(--cream);
+}
+.stage.run { animation: stage-fade var(--play) linear; }
+
+@keyframes stage-fade {
+  0% { opacity: 0; }
+  6%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.play { display: none; position: relative; align-items: flex-end; }
+.play.on { display: inline-flex; }
+.play * { animation-duration: var(--play); animation-timing-function: linear; animation-fill-mode: both; }
+
+.sprite { position: absolute; left: 50%; top: 50%; }
+
+/* Cricket: a ball comes in low, the word hits it for six. */
+.cricket .word { display: inline-block; animation-name: cricket-hit; }
+.cricket .ball {
+  width: 18px; height: 18px; margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: #d7263d;
+  display: flex; align-items: center;
+}
+.cricket .ball::after { content: ""; width: 100%; height: 1.5px; background: rgba(255, 255, 255, 0.75); }
+.cricket .ball { animation-name: cricket-ball, spin900; }
+
+@keyframes cricket-hit {
+  0%, 30% { rotate: 0deg; scale: 1; }
+  34% { rotate: -7deg; scale: 1.07; }
+  42% { rotate: 3deg; scale: 1.035; }
+  50%, 100% { rotate: 0deg; scale: 1; }
+}
+@keyframes cricket-ball {
+  0% { translate: -200px 14px; opacity: 0; }
+  5% { opacity: 1; }
+  16% { translate: -124px -22px; }
+  32% { translate: -48px 6px; }
+  55% { translate: 74px -95px; }
+  68% { opacity: 1; }
+  75%, 100% { translate: 180px -160px; opacity: 0; }
+}
+@keyframes spin900 { to { rotate: 900deg; } }
+
+/* Chess: a knight hops across the top in three L-shaped jumps. */
+.chess .word { display: inline-block; animation-name: chess-dip; }
+.chess .knight {
+  width: 40px; margin: -23px 0 0 -20px;
+  font-size: 40px; line-height: 46px;
+  color: var(--accent);
+  animation-name: knight;
+}
+@keyframes chess-dip {
+  0%, 30%, 38%, 55%, 63%, 80%, 88%, 100% { translate: 0 0; }
+  33%, 58%, 83% { translate: 0 4px; }
+}
+@keyframes knight {
+  0% { translate: -170px 0; opacity: 0; }
+  6% { opacity: 1; }
+  10% { translate: -170px 0; }
+  20% { translate: -125px -95px; }
+  30%, 35% { translate: -80px -54px; }
+  45% { translate: -35px -100px; }
+  55%, 60% { translate: 10px -54px; }
+  70% { translate: 55px -100px; }
+  80%, 85% { translate: 100px -54px; }
+  90% { opacity: 1; }
+  91% { translate: 145px -100px; }
+  97%, 100% { translate: 190px -20px; opacity: 0; }
+}
+
+/* Reading: the word turns over like a page, twice. */
+.reading .word { display: inline-block; transform-origin: left center; animation-name: page-turn; }
+@keyframes page-turn {
+  0%, 18% { transform: perspective(700px) rotateY(0deg); }
+  33% { transform: perspective(700px) rotateY(-90deg); }
+  33.01% { transform: perspective(700px) rotateY(90deg); }
+  48%, 58% { transform: perspective(700px) rotateY(0deg); }
+  73% { transform: perspective(700px) rotateY(-90deg); }
+  73.01% { transform: perspective(700px) rotateY(90deg); }
+  88%, 100% { transform: perspective(700px) rotateY(0deg); }
+}
+
+/* Football: the "oo" roll in as two footballs and bounce. */
+.football .balls { display: inline-flex; margin: 0 1px 0.13em; }
+.football .fb {
+  display: inline-block;
+  font-size: 0.66em;
+  line-height: 1.2;
+  letter-spacing: 0;
+  animation-name: roll-1, roll-spin-1;
+}
+.football .fb + .fb { animation-name: roll-2, roll-spin-2; }
+@keyframes roll-1 {
+  0% { translate: -260px 0; }
+  34%, 52% { translate: 0 0; }
+  60% { translate: 0 -22px; }
+  68% { translate: 0 0; }
+  73% { translate: 0 -8px; }
+  78%, 100% { translate: 0 0; }
+}
+@keyframes roll-spin-1 { 0% { rotate: -720deg; } 34%, 100% { rotate: 0deg; } }
+@keyframes roll-2 {
+  0%, 8% { translate: -260px 0; }
+  42%, 60% { translate: 0 0; }
+  68% { translate: 0 -22px; }
+  76% { translate: 0 0; }
+  81% { translate: 0 -8px; }
+  86%, 100% { translate: 0 0; }
+}
+@keyframes roll-spin-2 { 0%, 8% { rotate: -720deg; } 42%, 100% { rotate: 0deg; } }
+
+/* Yoga: each letter stretches up and settles, one after another. */
+.yoga .word span {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: stretch calc(var(--play) * 0.3) linear both;
+  animation-delay: calc(var(--play) * (0.12 + var(--i) * 0.12));
+}
+@keyframes stretch {
+  0%, 100% { scale: 1 1; }
+  50% { scale: 0.86 1.45; }
+}
+
+/* ---------- Store button ---------- */
+
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 11px 22px 11px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(255, 90, 31, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.store svg { width: 22px; height: 22px; flex: none; }
+.store small { display: block; font-size: 11.5px; line-height: 1.2; opacity: 0.85; }
+.store strong { display: block; color: #fff; font: 800 18px/1.15 "Bricolage Grotesque", system-ui, sans-serif; letter-spacing: -0.01em; }
+a.store:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(255, 90, 31, 0.36); }
+a.store:active { transform: scale(0.97); }
+.store[aria-disabled="true"] {
+  background: rgba(244, 241, 234, 0.08);
+  border: 1px solid rgba(244, 241, 234, 0.16);
+  box-shadow: none;
+  cursor: default;
+}
+.store[aria-disabled="true"] svg { color: var(--accent); }
+
+/* ---------- Card that slides up over the hero ---------- */
+
+.sheet {
+  position: relative;
+  z-index: 2;
+  margin-top: -30px;
+  background: var(--card);
+  border-radius: 30px 30px 0 0;
+  animation: sheet-in 0.52s cubic-bezier(0.33, 1, 0.68, 1) 0.25s both;
+}
+@keyframes sheet-in { from { opacity: 0; translate: 0 60px; } }
+
+.sheet main { padding-top: 44px; }
+.sheet h2 { font-size: clamp(24px, 5vw, 30px); margin-bottom: 6px; }
+.eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.sub { color: var(--muted); margin-bottom: 0; }
+
+.steps { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+.steps li { display: flex; gap: 14px; align-items: flex-start; margin: 0; }
+.steps h3 { margin: 2px 0 2px; font: 800 18px/1.3 "Bricolage Grotesque", system-ui, sans-serif; color: var(--ink); letter-spacing: -0.01em; }
+.steps p { margin: 0; }
+
+.tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  border: 2px solid #fff;
+  font-size: 22px;
+  box-shadow: var(--tile-shadow);
+}
+@media (prefers-color-scheme: dark) { .tile { border-color: transparent; } }
+
+/* Fade-and-rise as each block scrolls into view (the app's StaggerIn). */
+.reveal { opacity: 0; translate: 0 16px; transition: opacity 0.5s ease, translate 0.5s cubic-bezier(0.33, 1, 0.68, 1); }
+.reveal.in { opacity: 1; translate: 0 0; }
+
+@media (min-width: 720px) {
+  :root { --word: 72px; }
+  .hero { padding: 64px 16px 110px; }
+  .stage { height: 160px; margin-top: 30px; }
+  .wall-word { font-size: 64px; line-height: 76px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-row, .stage.run, .play *, .sheet { animation: none !important; }
+  .reveal { opacity: 1; translate: none; transition: none; }
+  .sprite { display: none; }
+}

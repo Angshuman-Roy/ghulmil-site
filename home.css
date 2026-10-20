@@ -297,6 +297,198 @@ a.store:active { transform: scale(0.97); }
 .reveal { opacity: 0; translate: 0 16px; transition: opacity 0.5s ease, translate 0.5s cubic-bezier(0.33, 1, 0.68, 1); }
 .reveal.in { opacity: 1; translate: 0 0; }
 
+/* ---------- Tour: app screens, top to bottom ---------- */
+
+.tour {
+  /* Breaks out of the 680px column so phones get room on wide screens. */
+  margin-inline: calc(50% - min(520px, 50vw - 16px));
+  overflow-x: clip;
+  padding-bottom: 8px;
+}
+.tour-head { max-width: 680px; margin: 0 auto; }
+
+.chapter {
+  display: grid;
+  gap: 30px;
+  justify-items: center;
+  margin-top: 64px;
+}
+.chapter-copy { width: 100%; max-width: 440px; }
+.chapter-copy p { margin: 10px 0 0; }
+
+.chapter-num {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chapter h3 {
+  margin: 14px 0 0;
+  font: 800 clamp(28px, 7vw, 40px)/1.06 "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.chapter h3 em { font-style: normal; color: var(--accent); }
+
+/* The phone: a dark bezel around the cropped screenshot. */
+.phone-wrap {
+  position: relative;
+  margin: 0;
+  width: min(272px, 70vw);
+  --p: 0;
+}
+.phone-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 8% -38%;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  filter: blur(8px);
+  transform: translateY(calc(var(--p) * 30px));
+}
+
+.phone {
+  position: relative;
+  padding: 9px;
+  border-radius: 44px;
+  background: var(--ink-solid);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(244, 241, 234, 0.08),
+    0 40px 70px -28px rgba(20, 24, 31, 0.55),
+    0 14px 28px -14px rgba(20, 24, 31, 0.35);
+  transform: translateY(calc(var(--p) * -14px));
+  animation: phone-float 7s ease-in-out infinite;
+  overflow: hidden;
+}
+.chapter:nth-of-type(even) .phone { animation-delay: -3.5s; }
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 35px;
+  background: var(--cream);
+}
+/* A sheen sweeps across the glass once the phone lands. */
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.32) 48%, transparent 60%);
+  translate: -120% 0;
+}
+.phone-wrap.in .phone::after { transition: translate 1.3s cubic-bezier(0.33, 1, 0.68, 1) 0.55s; translate: 120% 0; }
+
+@keyframes phone-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+/* Phones rise in tilted and settle upright (overrides the plain .reveal). */
+.phone-wrap.reveal {
+  translate: 0 80px;
+  rotate: var(--tilt, 0deg);
+  scale: 0.92;
+  transition:
+    opacity 0.6s ease,
+    translate 0.95s cubic-bezier(0.22, 1.2, 0.36, 1),
+    rotate 0.95s cubic-bezier(0.22, 1.2, 0.36, 1),
+    scale 0.95s cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+.phone-wrap.reveal.in { translate: 0 0; rotate: 0deg; scale: 1; }
+
+/* Little stickers that pop off the phone. */
+.chip {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-solid);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 12px 26px -8px rgba(20, 24, 31, 0.3);
+  opacity: 0;
+  scale: 0.4;
+  transform: translateY(calc(var(--p) * -34px));
+  transition: opacity 0.3s ease, scale 0.55s cubic-bezier(0.34, 1.7, 0.5, 1);
+  animation: chip-bob 5s ease-in-out infinite;
+}
+.chip-a { top: 17%; left: -26px; rotate: -5deg; }
+.chip-b { top: 63%; right: -30px; rotate: 4deg; animation-delay: -2.5s; }
+.chip-hot { background: var(--accent); color: #fff; }
+.tick {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2b64eb;
+  color: #fff;
+  font-size: 11px;
+}
+.phone-wrap.in .chip { opacity: 1; scale: 1; transition-delay: 0.5s; }
+.phone-wrap.in .chip-b { transition-delay: 0.68s; }
+
+@keyframes chip-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+/* Activity tiles drifting behind the last phone, like the hero's word wall. */
+.ribbon {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  max-width: 1040px;
+  translate: -50% -50%;
+  display: grid;
+  gap: 14px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  opacity: 0.85;
+}
+.ribbon-row { display: flex; gap: 14px; width: max-content; animation: drift 28s linear infinite; }
+.ribbon-row.reverse { animation-direction: reverse; animation-duration: 34s; }
+.ribbon .tile { width: 58px; height: 58px; border-radius: 18px; font-size: 27px; }
+
+@media (prefers-color-scheme: dark) {
+  .phone { box-shadow: inset 0 0 0 1.5px rgba(244, 241, 234, 0.12), 0 40px 70px -28px rgba(0, 0, 0, 0.7); }
+  .chip { background: #262c37; color: var(--cream); box-shadow: 0 12px 26px -8px rgba(0, 0, 0, 0.6); }
+  .chip-hot { background: var(--accent); color: #fff; }
+  .ribbon { opacity: 0.55; }
+}
+
+@media (min-width: 900px) {
+  .chapter {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 56px;
+    margin-top: 110px;
+  }
+  .chapter-copy { justify-self: end; }
+  .chapter:nth-of-type(even) .chapter-copy { order: 2; justify-self: start; }
+  .phone-wrap { width: 300px; }
+  .ribbon { width: 500px; }
+  .chapter h3 { font-size: 44px; }
+  .chapter-copy p { font-size: 17px; }
+}
+
 @media (min-width: 720px) {
   :root { --word: 72px; }
   .hero { padding: 64px 16px 110px; }
@@ -305,7 +497,10 @@ a.store:active { transform: scale(0.97); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wall-row, .stage.run, .play *, .sheet { animation: none !important; }
+  .wall-row, .stage.run, .play *, .sheet, .phone, .chip, .ribbon-row { animation: none !important; }
   .reveal { opacity: 1; translate: none; transition: none; }
+  .phone-wrap.reveal { rotate: none; scale: none; }
+  .chip { opacity: 1; scale: 1; transition: none; }
+  .phone::after { display: none; }
   .sprite { display: none; }
 }

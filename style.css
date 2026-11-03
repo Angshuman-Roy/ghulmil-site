@@ -1,24 +1,12 @@
 /* Shared styles for the Ghulmil public pages. Colours match the app. */
 :root {
-  --bg: #f4f1ea;
-  --ink: #14181f;
-  --muted: rgba(20, 24, 31, 0.55);
-  --body: rgba(20, 24, 31, 0.8);
-  --rule: rgba(20, 24, 31, 0.1);
-  --accent: #ff5a1f;
+  --bg: #fcf0da;
+  --ink: #1e1813;
+  --muted: rgba(30, 24, 19, 0.55);
+  --body: rgba(30, 24, 19, 0.8);
+  --rule: rgba(30, 24, 19, 0.14);
+  --accent: #d94e10;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14181f;
-    --ink: #f4f1ea;
-    --muted: rgba(244, 241, 234, 0.55);
-    --body: rgba(244, 241, 234, 0.82);
-    --rule: rgba(244, 241, 234, 0.12);
-    --accent: #ff7a45;
-    color-scheme: dark;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -29,7 +17,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--body);
-  font: 400 16px/1.7 "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font: 400 16px/1.7 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 main {
@@ -39,14 +27,15 @@ main {
 }
 
 .brand {
-  font: 800 16px/1 "Bricolage Grotesque", system-ui, sans-serif;
-  color: var(--accent);
+  font: 600 24px/1 "Fraunces", Georgia, serif;
+  letter-spacing: -0.03em;
+  color: var(--ink);
   text-decoration: none;
 }
 
 h1, h2 {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 800;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
   color: var(--ink);
   letter-spacing: -0.02em;
 }
@@ -70,3 +59,5 @@ a { color: var(--accent); text-underline-offset: 2px; overflow-wrap: anywhere; }
 .links a { font-weight: 600; font-size: 17px; }
 
 footer { margin-top: 48px; font-size: 13px; color: var(--muted); }
+
+.brand::after { content: "."; color: #f2601c; }

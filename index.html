@@ -3,195 +3,204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ghulmil</title>
-  <meta name="description" content="Find people nearby for football, chess, walks, jam sessions and more, or host your own.">
-  <meta name="theme-color" content="#14181f">
-  <meta property="og:title" content="ghulmil: find people nearby to do things with">
-  <meta property="og:description" content="Find people nearby for football, chess, walks, jam sessions and more, or host your own.">
+  <title>ghulmil · your people are closer than you think</title>
+  <meta name="description" content="Find people nearby for cricket, board games, treks, jam sessions and more, or host your own plan.">
+  <meta name="theme-color" content="#fcf0da">
+  <meta property="og:title" content="ghulmil: your people are closer than you think">
+  <meta property="og:description" content="Find people nearby for cricket, board games, treks, jam sessions and more, or host your own plan.">
   <meta property="og:image" content="https://ghulmil.app/screens/og.jpg">
   <meta property="og:url" content="https://ghulmil.app/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Schibsted+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
 </head>
-<body class="home">
+<body>
 
-<header class="hero">
-  <div class="wall" id="wall" aria-hidden="true"></div>
-
-  <div class="hero-inner">
-    <img class="wordmark" src="wordmark-white.png" alt="ghulmil" width="132" height="40">
-
-    <div class="stage run" id="stage" aria-hidden="true">
-      <span class="play cricket on">
-        <span class="word">cricket</span>
-        <span class="sprite ball"></span>
-      </span>
-      <span class="play chess">
-        <span class="word">chess</span>
-        <span class="sprite knight">♞</span>
-      </span>
-      <span class="play reading">
-        <span class="word">reading</span>
-      </span>
-      <span class="play football">
-        <span>f</span><span class="balls"><span class="fb">⚽</span><span class="fb">⚽</span></span><span>tball</span>
-      </span>
-      <span class="play yoga">
-        <span class="word"><span style="--i:0">y</span><span style="--i:1">o</span><span style="--i:2">g</span><span style="--i:3">a</span></span>
-      </span>
-    </div>
-
-    <h1>Your people are nearby.</h1>
-    <p class="lede">Football at 7? Chess on Sunday? Join a plan nearby, or start your own.</p>
-
-    <a class="store" id="get-app" aria-disabled="true">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
-      <span><small id="get-app-label">Coming soon to</small><strong>Google Play</strong></span>
-    </a>
+<header class="top">
+  <div class="top-inner">
+    <a class="wordmark" href="./">ghulmil<span>.</span></a>
+    <nav aria-label="Main">
+      <a href="#inside">Inside</a>
+      <a href="#how">How it works</a>
+      <a href="#safety">Safety</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="pill pill-sm" href="#download">Get the app <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
-<div class="sheet">
-<main>
-  <div class="reveal">
-    <p class="eyebrow">How it works</p>
-    <h2>From “koi plan hai?” to showing up.</h2>
+<section class="hero">
+  <div class="hero-copy">
+    <h1 class="rise">Your people are <em>closer</em> than you think.</h1>
+    <p class="lede rise">Find people nearby who want to do the things you love. Board games at 8? Rooftop jam after? Join a plan, or start your own.</p>
+    <div class="hero-actions rise">
+      <a class="pill store-link" href="#download">Find your people <span aria-hidden="true">→</span></a>
+      <span class="made">
+        <svg viewBox="0 0 32 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><circle cx="23" cy="7" r="4"/><circle cx="16" cy="6" r="5"/><path d="M1 22c0-5 3.5-8 8-8 1.6 0 3 .4 4.2 1.1A9 9 0 0 0 9.5 22H1Zm30 0c0-5-3.5-8-8-8-1.6 0-3 .4-4.2 1.1A9 9 0 0 1 22.5 22H31Zm-23 0c0-5.5 3.6-9 8-9s8 3.5 8 9H8Z"/></svg>
+        Made for<br>real connections.
+      </span>
+    </div>
   </div>
+  <div class="hero-art" aria-hidden="true">
+    <img src="art/hero.webp" srcset="art/hero-960.webp 960w, art/hero.webp 1536w" sizes="(max-width: 820px) 160vw, 100vw" width="1536" height="916" alt="" fetchpriority="high">
+  </div>
+  <p class="tagline"><span></span>Your city. Your interests. Your people.</p>
+</section>
 
-  <ol class="steps">
-    <li class="reveal">
-      <span class="tile" style="background:#ffe3d6">🏏</span>
-      <div>
-        <h3>Find a plan nearby</h3>
-        <p>Cricket, treks, board games, chai walks: see what's happening around you.</p>
-      </div>
-    </li>
-    <li class="reveal">
-      <span class="tile" style="background:#fff0d6">☕</span>
-      <div>
-        <h3>Ask to join</h3>
-        <p>The host sees who you are and lets you in. You'll get a ping when you're in.</p>
-      </div>
-    </li>
-    <li class="reveal">
-      <span class="tile" style="background:#d8f3ef">♟️</span>
-      <div>
-        <h3>Show up and meet your people</h3>
-        <p>Check in when you get there, then keep the chat going in the plan's feed.</p>
-      </div>
-    </li>
-    <li class="reveal">
-      <span class="tile" style="background:#dfe8ff">📚</span>
-      <div>
-        <h3>Or host your own</h3>
-        <p>Pick the time and place, set how many can come, and choose who joins.</p>
-      </div>
-    </li>
-  </ol>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-row" id="row-a"></div>
+  <div class="marquee-row reverse" id="row-b"></div>
+</div>
 
-  <section class="tour" aria-labelledby="tour-title">
-    <div class="tour-head reveal">
-      <p class="eyebrow">A look inside</p>
-      <h2 id="tour-title">The whole plan, in your pocket.</h2>
+<main>
+
+  <section class="showcase" id="inside">
+    <div class="phones">
+      <figure class="phone phone-back" style="--sb:#f3f0e9">
+        <img src="screens/host.webp" width="640" height="1243" loading="lazy" alt="Host something: start from scratch or pick a kind, from Sports and Music to Outdoor and Gaming">
+      </figure>
+      <figure class="phone phone-front" style="--sb:#f3f0e9">
+        <img src="screens/plans.webp" width="640" height="1249" loading="lazy" alt="Plans tab with this week's dates, Going, Hosting, Saved and Past tabs, and a Saath chalein? empty state">
+      </figure>
+      <span class="sticker sticker-a">Saath chalein?</span>
+      <span class="sticker sticker-b"><b>42</b> kinds of plans</span>
     </div>
 
-    <article class="chapter" style="--glow: rgba(31, 164, 99, 0.32); --tilt: -7deg">
-      <div class="chapter-copy reveal">
-        <span class="chapter-num">01 · Sign up</span>
-        <h3>Your people are <em>nearby</em></h3>
-        <p>Name, username, email, date of birth, and you're in. Ghulmil is for adults 18+, and a quick selfie gets you the blue tick.</p>
-      </div>
-      <figure class="phone-wrap reveal">
-        <div class="phone"><img src="screens/signup.webp" width="709" height="1436" loading="lazy" alt="Ghulmil sign-up screen with the drifting activity words and the name, username and email fields"></div>
-        <span class="chip chip-a">🔞 18+ only</span>
-        <span class="chip chip-b"><b class="tick">✓</b> Verified</span>
-      </figure>
-    </article>
-
-    <article class="chapter" style="--glow: rgba(255, 90, 31, 0.3); --tilt: 7deg">
-      <div class="chapter-copy reveal">
-        <span class="chapter-num">02 · Discover</span>
-        <h3>Plans happening <em>near you</em></h3>
-        <p>Cricket, chess, chai, a Sunday run: see what's on and ask to join. Swipe through them or browse the list.</p>
-      </div>
-      <figure class="phone-wrap reveal">
-        <div class="phone"><img src="screens/discover.webp" width="709" height="1436" loading="lazy" alt="Discover tab listing nearby plans, each with a date, spots left and the host"></div>
-        <span class="chip chip-a">📍 Within 25 km</span>
-        <span class="chip chip-b chip-hot">6 spots left</span>
-      </figure>
-    </article>
-
-    <article class="chapter" style="--glow: rgba(43, 100, 235, 0.26); --tilt: -7deg">
-      <div class="chapter-copy reveal">
-        <span class="chapter-num">03 · The plan</span>
-        <h3>Everything you need, <em>in one place</em></h3>
-        <p>When, where, who's going and what it costs. Updates only reach people the host let in, and you check in when you arrive.</p>
-      </div>
-      <figure class="phone-wrap reveal">
-        <div class="phone"><img src="screens/plan.webp" width="709" height="1436" loading="lazy" alt="A plan's page showing start time, people going, cost, place, host and the Requests and Check-in buttons"></div>
-        <span class="chip chip-a">👥 1/6 going</span>
-        <span class="chip chip-b">▦ Checked in</span>
-      </figure>
-    </article>
-
-    <article class="chapter" style="--glow: rgba(255, 90, 31, 0.3); --tilt: 7deg">
-      <div class="chapter-copy reveal">
-        <span class="chapter-num">04 · Host</span>
-        <h3>Host your own <em>in a minute</em></h3>
-        <p>Post it once and people nearby who follow that category see it fast. You set the spots and choose who joins.</p>
-      </div>
-      <figure class="phone-wrap reveal">
-        <div class="phone"><img src="screens/host.webp" width="709" height="1436" loading="lazy" alt="Host screen with a Start from scratch button and activity categories to pick from"></div>
-        <span class="chip chip-a">🔔 New request</span>
-        <span class="chip chip-b chip-hot">+ Start from scratch</span>
-      </figure>
-    </article>
-
-    <article class="chapter" style="--glow: rgba(124, 77, 255, 0.26); --tilt: -7deg">
-      <div class="chapter-copy reveal">
-        <span class="chapter-num">05 · Activities</span>
-        <h3>42 kinds of <em>things to do</em></h3>
-        <p>Sports, music, gaming, food, learning and more. Follow the ones you love and hear about plans first.</p>
-      </div>
-      <figure class="phone-wrap reveal">
-        <div class="ribbon" aria-hidden="true">
-          <div class="ribbon-row"><span class="tile" style="background:#ffe3d6">🏏</span><span class="tile" style="background:#e4dcff">🎮</span><span class="tile" style="background:#d8f3ef">🌿</span><span class="tile" style="background:#fff0d6">🍳</span><span class="tile" style="background:#dfe8ff">🎵</span><span class="tile" style="background:#ffdfe8">🎨</span><span class="tile" style="background:#ffe3d6">🏏</span><span class="tile" style="background:#e4dcff">🎮</span><span class="tile" style="background:#d8f3ef">🌿</span><span class="tile" style="background:#fff0d6">🍳</span><span class="tile" style="background:#dfe8ff">🎵</span><span class="tile" style="background:#ffdfe8">🎨</span></div>
-          <div class="ribbon-row reverse"><span class="tile" style="background:#dfe8ff">♟️</span><span class="tile" style="background:#ffe3d6">⚽</span><span class="tile" style="background:#fff0d6">☕</span><span class="tile" style="background:#d8f3ef">🚴</span><span class="tile" style="background:#ffdfe8">🎤</span><span class="tile" style="background:#e4dcff">🏸</span><span class="tile" style="background:#dfe8ff">♟️</span><span class="tile" style="background:#ffe3d6">⚽</span><span class="tile" style="background:#fff0d6">☕</span><span class="tile" style="background:#d8f3ef">🚴</span><span class="tile" style="background:#ffdfe8">🎤</span><span class="tile" style="background:#e4dcff">🏸</span></div>
-        </div>
-        <div class="phone"><img src="screens/kinds.webp" width="709" height="1436" loading="lazy" alt="Grid of activity categories: Sports, Mind and Learning, Creative, Entertainment, Outdoor, Music, Lifestyle and Gaming"></div>
-        <span class="chip chip-a">🏏 Sports</span>
-        <span class="chip chip-b">🎮 Gaming</span>
-      </figure>
-    </article>
+    <div class="features">
+      <p class="eyebrow">A look inside</p>
+      <h2>Less scrolling.<br><em>More showing up.</em></h2>
+      <ul class="feature-list">
+        <li class="reveal">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="8.5" r="2.7"/><path d="M2 19c0-3.6 2.7-6 6-6s6 2.4 6 6H2Zm12.6 0c0-2-.6-3.7-1.7-5 1-.6 2.2-1 3.6-1 3 0 5.5 2.2 5.5 6h-7.4Z"/></svg></span>
+          <div>
+            <h3>Find your people</h3>
+            <p>Cricket, chess, chai walks, a Sunday trek. See what's on near you and ask to join.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5a1 1 0 0 1 2 0V4h6V2.5a1 1 0 1 1 2 0V4h1.5A2.5 2.5 0 0 1 21 6.5v12a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-12A2.5 2.5 0 0 1 5.5 4H7V2.5ZM5 9v9.5c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5V9H5Zm2 2.5h3v3H7v-3Zm5 0h3v3h-3v-3Z"/></svg></span>
+          <div>
+            <h3>Host what you love</h3>
+            <p>Pick a kind, set the time, place and spots. You choose who gets in.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.6L13.5 2Z"/></svg></span>
+          <div>
+            <h3>Be part of it</h3>
+            <p>Your week at a glance: going, hosting, saved. Then show up and meet your people.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 
-  <section class="reveal">
-    <h2>Made for meeting safely</h2>
-    <ul>
-      <li><strong>Verified profiles.</strong> A blue tick means the selfie and email have been checked.</li>
-      <li><strong>Hosts decide who joins.</strong> Nobody lands in your plan uninvited.</li>
-      <li><strong>Report and block</strong> anyone, from their profile, at any time.</li>
-      <li><strong>18+ only.</strong></li>
+  <section class="story" id="how" aria-labelledby="how-title">
+    <div class="story-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">From <em>“koi plan hai?”</em> to showing up.</h2>
+    </div>
+
+    <div class="story-body">
+      <ol class="story-steps">
+        <li class="step" data-screen="0">
+          <span class="step-num">01</span>
+          <h3>Sign in, in a tap.</h3>
+          <p>Continue with Google or use your email. ghulmil is for adults 18+, and a quick selfie gets you the blue tick.</p>
+          <figure class="phone phone-inline" style="--sb:#10171d"><img src="screens/signin.webp" width="640" height="1207" loading="lazy" alt="Sign-in screen: Plans happen here, with Continue with Google and email fields"></figure>
+        </li>
+        <li class="step" data-screen="1">
+          <span class="step-num">02</span>
+          <h3>Pick a kind, or start from scratch.</h3>
+          <p>Sports, mind &amp; learning, creative, music, outdoor, gaming: 42 activities in all. Post a plan in a minute and people nearby see it fast.</p>
+          <figure class="phone phone-inline" style="--sb:#f3f0e9"><img src="screens/host.webp" width="640" height="1243" loading="lazy" alt="Host something screen with activity kinds"></figure>
+        </li>
+        <li class="step" data-screen="2">
+          <span class="step-num">03</span>
+          <h3>Tap <em>Chalo!</em> and you're on the list.</h3>
+          <p>When a host lets you in, the plan lands in your week. Going, hosting, saved and past, all in one place.</p>
+          <figure class="phone phone-inline" style="--sb:#f3f0e9"><img src="screens/plans.webp" width="640" height="1249" loading="lazy" alt="Plans tab with the week's dates and the Going tab"></figure>
+        </li>
+        <li class="step" data-screen="3">
+          <span class="step-num">04</span>
+          <h3>Save it for later.</h3>
+          <p>Not today? Swipe up in Quick match, or tap the bookmark on any plan, and park it in Saved.</p>
+          <figure class="phone phone-inline" style="--sb:#f3f0e9"><img src="screens/saved.webp" width="640" height="1267" loading="lazy" alt="Saved plans tab: Nothing saved yet, with an Explore plans button"></figure>
+        </li>
+      </ol>
+
+      <div class="story-stage" aria-hidden="true">
+        <div class="sun"></div>
+        <figure class="phone phone-stage" id="stage">
+          <img class="on" src="screens/signin.webp" width="640" height="1207" loading="lazy" alt="" style="--sb:#10171d">
+          <img src="screens/host.webp" width="640" height="1243" loading="lazy" alt="" style="--sb:#f3f0e9">
+          <img src="screens/plans.webp" width="640" height="1249" loading="lazy" alt="" style="--sb:#f3f0e9">
+          <img src="screens/saved.webp" width="640" height="1267" loading="lazy" alt="" style="--sb:#f3f0e9">
+        </figure>
+        <ol class="stage-dots"><li class="on"></li><li></li><li></li><li></li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety" id="safety" aria-labelledby="safety-title">
+    <div class="reveal">
+      <p class="eyebrow">Made for meeting safely</p>
+      <h2 id="safety-title">Real people, <em>real plans.</em></h2>
+    </div>
+    <ul class="cards">
+      <li class="reveal"><b>✓</b><h3>Verified profiles</h3><p>A blue tick means the selfie and email have been checked.</p></li>
+      <li class="reveal"><b>✋</b><h3>Hosts decide</h3><p>Nobody lands in your plan uninvited. You choose who joins.</p></li>
+      <li class="reveal"><b>⚑</b><h3>Report &amp; block</h3><p>Anyone, from their profile, at any time.</p></li>
+      <li class="reveal"><b>18+</b><h3>Adults only</h3><p>ghulmil is for people 18 and over.</p></li>
     </ul>
   </section>
 
-  <section class="reveal">
-    <ul class="links">
-      <li><a href="guidelines.html">Community Guidelines</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="child-safety.html">Child Safety Standards</a></li>
-      <li>Contact support: <a href="mailto:support@ghulmil.app">support@ghulmil.app</a></li>
-    </ul>
+  <section class="cta" id="download">
+    <div class="cta-sun" aria-hidden="true"></div>
+    <div class="cta-copy reveal">
+      <p class="eyebrow">Get the app</p>
+      <h2>Saath <em>chalein?</em></h2>
+      <p>ghulmil is in testing right now and coming soon to Google Play.</p>
+      <a class="store" id="get-app" aria-disabled="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+        <span><small id="get-app-label">Coming soon to</small><strong>Google Play</strong></span>
+      </a>
+    </div>
   </section>
 
-  <footer>© 2026 ghulmil</footer>
 </main>
-</div>
+
+<footer class="foot" id="contact">
+  <svg class="skyline" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.6" fill="#c9783f"/></pattern>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff"/></linearGradient>
+      <mask id="m"><rect width="1440" height="160" fill="url(#fade)"/></mask>
+    </defs>
+    <path mask="url(#m)" fill="url(#dots)" d="M0 160V96h28V70h18v26h20V58h30v38h14V40h8V22h4v18h8v56h22V76h34v84h0V64h26v-8h22v40h18V30l14-12 14 12v66h16V72h40v24h12V50h26v46h22V80h18V44h8V8h4v36h8v52h24V66h36v30h10V54h30v42h20V86h26V34l16-14 16 14v62h14V60h40v36h18V76h22V40h10V20h4v20h10v56h26V68h38v28h16V50h28v46h24V82h20V36l12-10 12 10v60h18V64h36v32h14V56h30v40h20V74h40v22h18V46h8V12h4v34h8v50h24V70h30v26h22V58h28v38h16V84h32v76z"/>
+  </svg>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a class="wordmark" href="./">ghulmil<span>.</span></a>
+      <p>Find people nearby to do things with.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Say hello</h4>
+      <a href="mailto:support@ghulmil.app">support@ghulmil.app</a>
+    </div>
+    <div class="foot-col">
+      <h4>Policies</h4>
+      <a href="guidelines.html">Community Guidelines</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="child-safety.html">Child Safety Standards</a>
+      <a href="delete-account.html">Delete your account</a>
+    </div>
+  </div>
+  <p class="copy">© 2026 ghulmil · Made in India</p>
+</footer>
 
 <script>
   // Paste the Play Store link here once the app is live, e.g.
@@ -203,76 +212,51 @@
     btn.href = PLAY_STORE_URL;
     btn.removeAttribute("aria-disabled");
     document.getElementById("get-app-label").textContent = "Get it on";
+    document.querySelectorAll('a[href="#download"]').forEach((a) => { a.href = PLAY_STORE_URL; });
   }
 
-  // Drifting word wall (same rows, colours and speeds as the app).
-  const ROWS = [
-    { words: ["cricket", "book club", "trek", "jam session", "badminton", "chai walk"], speed: 26 },
-    { words: ["chess", "football", "board games", "yoga", "cycling", "sketching"], speed: 20, reverse: true },
-    { words: ["reading", "turf 5s", "photo walk", "pickleball", "karaoke", "run club"], speed: 30 },
-    { words: ["coding", "carrom", "sunset hike", "salsa", "quiz night", "kabaddi"], speed: 22, reverse: true },
-  ];
-  const tone = (r, w) => ((r + w) % 5 === 0 ? " lit-orange" : (r * 2 + w) % 7 === 0 ? " lit-green" : "");
-  const wall = document.getElementById("wall");
-  const rows = ROWS.map((row, r) => {
-    const copy = '<span class="wall-copy">' + row.words.map((word, w) =>
-      `<span class="wall-word${tone(r, w)}">${word}<span class="wall-dot"> · </span></span>`).join("") + "</span>";
-    const el = document.createElement("div");
-    el.className = "wall-row" + (row.reverse ? " reverse" : "");
-    el.innerHTML = copy + copy;
-    wall.appendChild(el);
-    return { el, speed: row.speed };
-  });
-  // Each row slides one copy's width per loop, at the row's speed in px/s.
-  const sizeRows = () => rows.forEach(({ el, speed }) => {
-    el.style.animationDuration = el.firstChild.offsetWidth / speed + "s";
-  });
-  sizeRows();
-  document.fonts && document.fonts.ready.then(sizeRows);
-  addEventListener("resize", sizeRows);
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Playing words: each one acts itself out, then hands over to the next.
-  const stage = document.getElementById("stage");
-  const plays = stage.querySelectorAll(".play");
-  let current = 0;
-  stage.addEventListener("animationend", (e) => {
-    if (e.target !== stage) return;
-    plays[current].classList.remove("on");
-    current = (current + 1) % plays.length;
-    plays[current].classList.add("on");
-    stage.classList.remove("run");
-    void stage.offsetWidth; // restart the fade
-    stage.classList.add("run");
-  });
+  // Scrolling activity words (same words as the app's sign-in wall).
+  const fill = (id, words) => {
+    const copy = '<span class="marquee-copy">' + words.map((w, i) =>
+      `<span class="${i % 3 === 1 ? "it" : ""}">${w}</span><i></i>`).join("") + "</span>";
+    document.getElementById(id).innerHTML = copy + copy;
+  };
+  fill("row-a", ["cricket", "book club", "trek", "jam session", "badminton", "chai walk", "chess", "football", "board games"]);
+  fill("row-b", ["yoga", "cycling", "sketching", "photo walk", "pickleball", "karaoke", "run club", "quiz night", "kabaddi"]);
 
   // Blocks fade up as they scroll into view.
   const io = new IntersectionObserver((entries) => entries.forEach((entry) => {
     if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
   }), { threshold: 0.15 });
-  document.querySelectorAll(".reveal").forEach((el, i) => {
-    if (!el.closest(".tour")) el.style.transitionDelay = (i % 4) * 70 + "ms";
-    io.observe(el);
-  });
+  document.querySelectorAll(".reveal, .step, .showcase").forEach((el) => io.observe(el));
 
-  // Tour phones drift a little against the scroll; --p runs -1 (above centre) to 1 (below).
-  const phones = document.querySelectorAll(".phone-wrap");
-  let ticking = false;
-  const parallax = () => {
-    ticking = false;
-    const vh = innerHeight;
-    phones.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.bottom < -vh || r.top > vh * 2) return;
-      const p = (r.top + r.height / 2 - vh / 2) / vh;
-      el.style.setProperty("--p", Math.max(-1, Math.min(1, p)).toFixed(3));
-    });
+  // How it works: the sticky phone shows the screen for the step in the middle of the viewport.
+  const shots = document.querySelectorAll("#stage img");
+  const dots = document.querySelectorAll(".stage-dots li");
+  const show = (n) => {
+    shots.forEach((img, i) => img.classList.toggle("on", i === n));
+    dots.forEach((d, i) => d.classList.toggle("on", i === n));
   };
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    addEventListener("scroll", () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(parallax); }
-    }, { passive: true });
-    parallax();
-  }
+  const stepIo = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting) show(+entry.target.dataset.screen);
+  }), { rootMargin: "-45% 0px -45% 0px" });
+  document.querySelectorAll(".step").forEach((el) => stepIo.observe(el));
+
+  // Header gets a hairline once you scroll; hero art drifts a little slower than the page.
+  const bar = document.querySelector(".top");
+  const art = document.querySelector(".hero-art img");
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    bar.classList.toggle("stuck", scrollY > 8);
+    if (!reduced && scrollY < innerHeight * 1.5) art.style.transform = `translate3d(0, ${scrollY * 0.12}px, 0)`;
+  };
+  addEventListener("scroll", () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
 </script>
 </body>
 </html>

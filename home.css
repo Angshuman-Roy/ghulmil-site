@@ -94,14 +94,15 @@ p { margin: 0; }
 }
 .made svg { width: 40px; fill: #5b4a3d; }
 
-.hero-art { margin-top: -18%; position: relative; z-index: 1; overflow: hidden; }
-.hero-art img {
-  width: 100%; will-change: transform;
+/* Mask lives on the frame, not the img, so the parallax drift can't slide the fade out of view. */
+.hero-art {
+  margin-top: -18%; position: relative; z-index: 1; overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 88%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 88%, transparent 100%);
 }
+.hero-art img { width: 100%; will-change: transform; }
 .tagline {
-  position: relative; z-index: 2; margin: -10px 0 0; padding: 0 24px 34px;
+  position: relative; z-index: 2; margin: 14px 0 0; padding: 0 24px 34px;
   display: flex; align-items: center; justify-content: center; gap: 18px;
   font-size: clamp(11px, 1.05vw, 15px); font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink);
 }

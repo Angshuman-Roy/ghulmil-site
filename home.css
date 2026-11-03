@@ -280,12 +280,12 @@ h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.03
 
 /* Footer */
 .foot { margin-top: 100px; position: relative; }
-.skyline { display: block; width: 100%; height: 160px; }
+.skyline { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 170; background: var(--cream); }
 .foot-inner {
   max-width: var(--wrap); margin: 0 auto; padding: 48px 24px 24px;
   display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px;
 }
-.foot { background: linear-gradient(to bottom, transparent 160px, #f6e0bd 160px); }
+.foot { background: #f6e0bd; }
 .foot-brand p { margin-top: 12px; color: var(--muted); }
 .foot-col { display: flex; flex-direction: column; gap: 8px; }
 .foot-col h4 { margin: 0 0 6px; font: 600 13px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-deep); }
@@ -338,8 +338,7 @@ h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.03
   .cta { padding: 64px 28px !important; border-radius: 28px; }
   .cta-sun { width: 320px; right: -140px; top: 0; margin-top: -60px; }
   .foot-inner { grid-template-columns: 1fr; gap: 28px; }
-  .skyline { height: 100px; }
-  .foot { background: linear-gradient(to bottom, transparent 100px, #f6e0bd 100px); }
+  .skyline { height: 120px; aspect-ratio: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

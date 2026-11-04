@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,16 +12,19 @@
   <meta property="og:url" content="https://ghulmil.app/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
+  <!-- Start the hero image download straight away (it's the largest thing on screen). Must match the <picture> below. -->
+  <link rel="preload" as="image" media="(max-width: 820px)" imagesrcset="art/hero-640.webp 640w, art/hero-960.webp 960w, art/hero-1200.webp 1200w" imagesizes="160vw" fetchpriority="high">
+  <link rel="preload" as="image" media="(min-width: 821px)" imagesrcset="art/hero-960.webp 960w, art/hero-1200.webp 1200w, art/hero-1536.webp 1536w" imagesizes="100vw" fetchpriority="high">
+  <script>document.documentElement.className = "js";</script>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="top">
   <div class="top-inner">
-    <a class="wordmark" href="./">ghulmil<span>.</span></a>
+    <a class="wordmark" href="./" aria-label="ghulmil home">ghulmil<span aria-hidden="true">.</span></a>
     <nav aria-label="Main">
       <a href="#inside">Inside</a>
       <a href="#how">How it works</a>
@@ -32,9 +35,11 @@
   </div>
 </header>
 
-<section class="hero">
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero-copy">
-    <h1 class="rise">Your people are <em>closer</em> than you think.</h1>
+    <h1 class="rise" id="hero-title">Your people are <em>closer</em> than you think.</h1>
     <p class="lede rise">Find people nearby who want to do the things you love. Board games at 8? Rooftop jam after? Join a plan, or start your own.</p>
     <div class="hero-actions rise">
       <a class="pill store-link" href="#download">Find your people <span aria-hidden="true">→</span></a>
@@ -45,19 +50,29 @@
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">
-    <img src="art/hero.webp" srcset="art/hero-960.webp 960w, art/hero.webp 1536w" sizes="(max-width: 820px) 160vw, 100vw" width="1536" height="916" alt="" fetchpriority="high">
+    <!-- Phones top out at 1200px: it's drawn at 160% width there, so a 3x screen would otherwise pull the 1536px file. -->
+    <picture>
+      <source media="(max-width: 820px)" srcset="art/hero-640.webp 640w, art/hero-960.webp 960w, art/hero-1200.webp 1200w" sizes="160vw">
+      <img src="art/hero-1536.webp" srcset="art/hero-960.webp 960w, art/hero-1200.webp 1200w, art/hero-1536.webp 1536w" sizes="100vw" width="1536" height="916" alt="" fetchpriority="high">
+    </picture>
   </div>
   <p class="tagline"><span></span>Your city. Your interests. Your people.</p>
 </section>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-row" id="row-a"></div>
-  <div class="marquee-row reverse" id="row-b"></div>
+<div class="marquee-wrap">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-row" id="row-a"></div>
+    <div class="marquee-row reverse" id="row-b"></div>
+  </div>
+  <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="i-play" d="M8 5.5v13l10.5-6.5z"/></svg>
+    Pause animations
+  </button>
 </div>
 
-<main>
+<div class="content">
 
-  <section class="showcase" id="inside">
+  <section class="showcase" id="inside" aria-labelledby="inside-title">
     <div class="phones">
       <figure class="phone phone-back" style="--sb:#f3f0e9">
         <img src="screens/host.webp" width="640" height="1243" loading="lazy" alt="Host something: start from scratch or pick a kind, from Sports and Music to Outdoor and Gaming">
@@ -71,7 +86,7 @@
 
     <div class="features">
       <p class="eyebrow">A look inside</p>
-      <h2>Less scrolling.<br><em>More showing up.</em></h2>
+      <h2 id="inside-title">Less scrolling.<br><em>More showing up.</em></h2>
       <ul class="feature-list">
         <li class="reveal">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="8.5" r="2.7"/><path d="M2 19c0-3.6 2.7-6 6-6s6 2.4 6 6H2Zm12.6 0c0-2-.6-3.7-1.7-5 1-.6 2.2-1 3.6-1 3 0 5.5 2.2 5.5 6h-7.4Z"/></svg></span>
@@ -151,26 +166,27 @@
       <h2 id="safety-title">Real people, <em>real plans.</em></h2>
     </div>
     <ul class="cards">
-      <li class="reveal"><b>✓</b><h3>Verified profiles</h3><p>A blue tick means the selfie and email have been checked.</p></li>
-      <li class="reveal"><b>✋</b><h3>Hosts decide</h3><p>Nobody lands in your plan uninvited. You choose who joins.</p></li>
-      <li class="reveal"><b>⚑</b><h3>Report &amp; block</h3><p>Anyone, from their profile, at any time.</p></li>
-      <li class="reveal"><b>18+</b><h3>Adults only</h3><p>ghulmil is for people 18 and over.</p></li>
+      <li class="reveal"><b aria-hidden="true">✓</b><h3>Verified profiles</h3><p>A blue tick means the selfie and email have been checked.</p></li>
+      <li class="reveal"><b aria-hidden="true">✋</b><h3>Hosts decide</h3><p>Nobody lands in your plan uninvited. You choose who joins.</p></li>
+      <li class="reveal"><b aria-hidden="true">⚑</b><h3>Report &amp; block</h3><p>Anyone, from their profile, at any time.</p></li>
+      <li class="reveal"><b aria-hidden="true">18+</b><h3>Adults only</h3><p>ghulmil is for people 18 and over.</p></li>
     </ul>
   </section>
 
-  <section class="cta" id="download">
+  <section class="cta" id="download" aria-labelledby="download-title">
     <div class="cta-sun" aria-hidden="true"></div>
     <div class="cta-copy reveal">
       <p class="eyebrow">Get the app</p>
-      <h2>Saath <em>chalein?</em></h2>
+      <h2 id="download-title">Saath <em>chalein?</em></h2>
       <p>ghulmil is in testing right now and coming soon to Google Play.</p>
-      <a class="store" id="get-app" aria-disabled="true">
+      <a class="store" id="get-app">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
         <span><small id="get-app-label">Coming soon to</small><strong>Google Play</strong></span>
       </a>
     </div>
   </section>
 
+</div>
 </main>
 
 <footer class="foot" id="contact">
@@ -189,15 +205,15 @@
   </svg>
   <div class="foot-inner">
     <div class="foot-brand">
-      <a class="wordmark" href="./">ghulmil<span>.</span></a>
+      <a class="wordmark" href="./" aria-label="ghulmil home">ghulmil<span aria-hidden="true">.</span></a>
       <p>Find people nearby to do things with.</p>
     </div>
     <div class="foot-col">
-      <h4>Say hello</h4>
+      <h2>Say hello</h2>
       <a href="mailto:support@ghulmil.app">support@ghulmil.app</a>
     </div>
     <div class="foot-col">
-      <h4>Policies</h4>
+      <h2>Policies</h2>
       <a href="guidelines.html">Community Guidelines</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="child-safety.html">Child Safety Standards</a>
@@ -215,12 +231,21 @@
   if (PLAY_STORE_URL) {
     const btn = document.getElementById("get-app");
     btn.href = PLAY_STORE_URL;
-    btn.removeAttribute("aria-disabled");
     document.getElementById("get-app-label").textContent = "Get it on";
     document.querySelectorAll('a[href="#download"]').forEach((a) => { a.href = PLAY_STORE_URL; });
   }
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Pause button for the looping animations (marquee, stickers, glow). Remembered between visits.
+  const toggle = document.getElementById("motion-toggle");
+  const setPaused = (paused) => {
+    document.documentElement.classList.toggle("paused", paused);
+    toggle.setAttribute("aria-pressed", String(paused));
+    try { localStorage.setItem("ghulmil-paused", paused ? "1" : ""); } catch (e) {}
+  };
+  toggle.addEventListener("click", () => setPaused(toggle.getAttribute("aria-pressed") !== "true"));
+  try { if (localStorage.getItem("ghulmil-paused")) setPaused(true); } catch (e) {}
 
   // Scrolling activity words (same words as the app's sign-in wall).
   const fill = (id, words) => {

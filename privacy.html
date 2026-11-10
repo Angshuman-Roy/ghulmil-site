@@ -13,7 +13,7 @@
 <main>
   <a class="brand" href="./">ghulmil</a>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated 17 October 2026</p>
+  <p class="updated">Last updated 10 November 2026</p>
 
   <p class="intro">
     ghulmil helps you find people nearby to do things with: sports, games, music, walks and more. To do that, we
@@ -41,6 +41,9 @@
       your interests.</p>
     <p><strong>Verification.</strong> When you verify your account, we record that you took a profile selfie and
       confirmed your email with a one-time code. We don't use facial recognition or collect biometric data.</p>
+    <p><strong>Optional details.</strong> If you choose to add them: your <strong>gender</strong>, which is private and
+      used only for women-only plans (women can host them, and verified women can join), and a
+      <strong>UPI ID</strong>, so people in your paid plans can pay you. ghulmil never handles payments.</p>
     <p><strong>Location.</strong> With your permission, we use your phone's location while you use the app to show
       activities within your chosen distance. If you save a home location and search radius in your profile, we store
       those too. When you host an activity, we store the place you choose for it.</p>
@@ -50,11 +53,22 @@
     <p><strong>Activity and participation.</strong> Activities you host, join requests you send or receive, the
       activities you join, save or pass on, waitlist places, attendance, and the show-up rate calculated from them.</p>
     <p><strong>Content you share.</strong> Posts, photos (taken with your camera or chosen from your photo library),
-      comments and poll votes in activity feeds, and any reports you submit.</p>
+      comments and poll votes in activity feeds, questions you ask hosts and their answers, and any reports you
+      submit.</p>
+    <p><strong>Plan alerts.</strong> If you ask to be told when a plan appears near you, we store the kind of plan, the
+      spot you chose and the distance.</p>
+    <p><strong>Notifications.</strong> If you allow notifications, we store a token from your phone that lets us send
+      them to it. It's removed when you sign out.</p>
     <p><strong>Technical information.</strong> When the app talks to our servers, we log each request: the time, the
       action requested, the information sent with it, and an error message if something fails. Passwords and sign-in
       tokens are always removed from these logs. We use them to keep the service running and secure. We also record
-      when you were last active.</p>
+      when you were last active, and keep a short record of requests that failed on your account so we can fix bugs
+      you report.</p>
+    <p><strong>Usage data.</strong> To understand what's confusing and improve the app, we record which screens you
+      open and which buttons you use (for example "viewed a plan" or "sent a join request"), linked to your account
+      ID only. It never includes your name, email, messages, location or contacts, and we don't record your screen.
+      You can turn this off in <strong>Settings → Share usage data</strong>. We also count what happens in the service,
+      such as plans posted, requests approved and check-ins, to see how ghulmil is doing.</p>
     <p>We don't collect your contacts, your location in the background when the app is closed, or any advertising
       identifiers.</p>
   </section>
@@ -65,8 +79,8 @@
       <li>To create and run your account, and to keep you signed in.</li>
       <li>To show you activities near you that match your interests.</li>
       <li>To handle join requests, waitlists, check-ins and attendance.</li>
-      <li>To show you notifications in the app, such as approvals, waitlist updates, cancellations and new posts in
-        activities you've joined.</li>
+      <li>To send you notifications in the app and on your phone, such as approvals, join requests, reminders,
+        answers to your questions, and plans that match your alerts.</li>
       <li>To build trust between members, through verification badges and show-up rates.</li>
       <li>To keep the community safe: reviewing reports, enforcing our rules, and preventing fraud and abuse.</li>
       <li>To fix problems and improve the app.</li>
@@ -84,8 +98,13 @@
     <p><strong>Activities you host</strong>, including their place and time, are visible to members searching nearby.</p>
     <p><strong>Activity feeds</strong> (posts, photos, comments and polls) are visible only to the host and members
       who've been approved to join that activity.</p>
-    <p><strong>Never shown to other members:</strong> your email address, your password, your saved home location, and
-      your exact current location. People nearby see an approximate distance to an activity, not where you are.</p>
+    <p><strong>Questions to hosts</strong> and their answers are visible to every signed-in member who can see that
+      plan, with the asker's name and photo.</p>
+    <p><strong>Your UPI ID</strong>, if you add one, is shown only to people in your paid plans.</p>
+    <p><strong>Shared plan links.</strong> When you share a plan, anyone with the link can see only the plan's name and
+      the host's first name. Its time, place and members stay inside the app.</p>
+    <p><strong>Never shown to other members:</strong> your email address, your password, your gender, your saved home
+      location, and your exact current location. People nearby see an approximate distance to an activity, not where you are.</p>
   </section>
 
   <section>
@@ -97,7 +116,15 @@
       <li><strong>Our server hosting provider</strong>, which runs the service that connects the app to the database.</li>
       <li><strong>Google Maps</strong> (Android) and <strong>Apple Maps</strong> (iOS), to display maps and look up
         addresses when you choose a place.</li>
+      <li><strong>Expo</strong> and <strong>Google Firebase Cloud Messaging</strong> (Android) or <strong>Apple Push
+        Notification service</strong> (iOS), to deliver notifications to your phone. They receive the notification's
+        text and your phone's notification token.</li>
+      <li><strong>PostHog</strong>, for usage data as described above. It's stored in the United States. You can turn it
+        off in Settings.</li>
     </ul>
+    <p><strong>Support.</strong> When you report a problem, a small number of ghulmil team members can look at your
+      account's records (such as your plans, requests, notifications and failed requests) to fix it. They can't sign in
+      as you or act on your behalf, and every look is logged.</p>
     <p>We may also disclose information if the law requires it, to respond to a valid legal request, or when we believe
       in good faith that it's needed to protect someone's safety.</p>
   </section>
@@ -107,6 +134,8 @@
     <p>We keep your information for as long as your account is open. When you delete your account, we permanently
       delete your profile, photos, posts, comments and the activities you host. Copies in our backups are overwritten
       within 30 days.</p>
+    <p>Usage counts are kept as individual records for 90 days and then only as daily totals. Records of failed
+      requests are deleted after 30 days.</p>
     <p>We may keep a limited record of reports and safety actions for longer, where we need it to protect the community
       or meet legal obligations.</p>
   </section>
@@ -115,13 +144,16 @@
     <h2>6. Your choices and rights</h2>
     <ul>
       <li><strong>See and edit your information:</strong> update your profile at any time from the You tab.</li>
+      <li><strong>Notifications:</strong> turn them off in your phone's settings, and remove plan alerts in
+        <strong>Settings → Plan alerts</strong>.</li>
+      <li><strong>Usage data:</strong> turn it off in <strong>Settings → Share usage data</strong>.</li>
       <li><strong>Location, camera and photos:</strong> turn access on or off in your phone's settings. Without location, you
         can still browse, but results won't be sorted by distance.</li>
       <li><strong>Delete your account:</strong> go to <strong>You → Delete account</strong>. This permanently deletes
         your account and data, as described above. No longer have the app? See
         <a href="delete-account">how to delete your account</a> by email.</li>
       <li><strong>Block and report:</strong> you can block anyone, and report profiles, activities, posts or comments
-        that break our <a href="guidelines">Community Guidelines</a>.</li>
+        that break our <a href="guidelines">Community Guidelines</a>, including questions on plans.</li>
     </ul>
     <p>Depending on where you live, you may also have the right to request a copy of your data, to have inaccurate data
       corrected, to object to or restrict certain uses, or to withdraw consent. To make any request, email us at

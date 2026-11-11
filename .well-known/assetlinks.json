@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ghulmil.app",
+      "sha256_cert_fingerprints": ["8F:40:44:7C:2B:5C:9C:B6:74:F9:F6:A9:7D:97:26:BA:D4:F2:A8:4A:D7:35:29:22:BB:A3:45:17:8E:8A:55:93"]
+    }
+  }
+]

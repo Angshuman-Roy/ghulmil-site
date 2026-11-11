@@ -332,6 +332,8 @@ h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.03
 .foot-col { display: flex; flex-direction: column; gap: 8px; }
 .foot-col h2 { margin: 0 0 6px; font: 600 13px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange-text); }
 .foot-col a { text-decoration: none; font-weight: 500; padding: 4px 0; }
+.foot-col .ico-link { display: inline-flex; align-items: center; gap: 10px; }
+.foot-col .ico-link svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .foot-col a:hover { color: var(--orange-text); text-decoration: underline; text-underline-offset: 3px; }
 .copy { max-width: var(--wrap); margin: 0 auto; padding: 20px 24px 32px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); }
 

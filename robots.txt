@@ -1,0 +1,5 @@
+# ghulmil.app – all pages may be crawled
+User-agent: *
+Allow: /
+
+Sitemap: https://ghulmil.app/sitemap.xml

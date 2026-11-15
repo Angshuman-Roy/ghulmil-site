@@ -24,15 +24,18 @@
   const POSES = {
     sahib: {
       idle: "01-idle-open", blink: "02-idle-blink", call: "03-calling-bubli", talkSide: "04-talking-to-bubli",
-      shy: "05-shy-smile", wave: "06-waving", point: "07-pointing-side", curious: "08-curious",
-      oops: "09-embarrassed-laugh", phew: "10-relieved", cheer: "11-cheering-fists",
+      wave: "06-waving", point: "07-pointing-side", curious: "08-curious",
+      phew: "10-relieved", cheer: "11-cheering-fists",
       thumbs: "12-thumbs-up", phone: "13-phone", wow: "14-delighted",
     },
     bubli: {
       idle: "01-idle-open", blink: "02-idle-blink", talk: "03-talking-to-visitor", talkSide: "04-talking-to-sahib",
-      tease: "05-teasing-smile", point: "06-pointing-side", down: "07-gesture-down", serious: "08-warm-serious",
+      point: "06-pointing-side", down: "07-gesture-down", serious: "08-warm-serious",
       laugh: "09-laughing-closed-eyes", wave: "10-waving", cheer: "11-cheering-fists",
     },
+    // Their friends: Dipa (glasses, green jacket) and Bumba (yellow hoodie).
+    dipa: { idle: "01-idle-open", blink: "02-idle-blink", wave: "03-waving", talkSide: "04-talking-side", cheer: "05-cheering-fists" },
+    bumba: { idle: "01-idle-open", blink: "02-idle-blink", wave: "03-waving", talkSide: "04-talking-side", cheer: "05-cheering-fists" },
   };
   const url = (who, pose) => `mascots/${who}-${POSES[who][pose]}.webp`;
 
@@ -75,6 +78,8 @@
   if (!cast) return;
   const bubli = new Mascot(cast.querySelector('[data-who="bubli"]'));
   const sahib = new Mascot(cast.querySelector('[data-who="sahib"]'));
+  const friends = ["bumba", "dipa"].map((w) => new Mascot(cast.querySelector(`[data-who="${w}"]`)));
+  const everyone = [bubli, sahib, ...friends];
   const bubble = $("bubble");
 
   const say = (who, text) => {
@@ -93,13 +98,14 @@
   const INTRO = [
     [0,    () => { sahib.set("idle", false); sahib.enter(); }],                       // slides in, looks at you
     [1000, () => { sahib.set("call"); say("sahib", "Arre Bubli! Jaldi aa, koi aaya hai!"); }],
-    [2500, () => { bubli.set("talkSide", false); bubli.enter(); sahib.set("shy");     // she overshoots and bounces back
+    [2500, () => { bubli.set("talkSide", false); bubli.enter(); sahib.set("thumbs");  // she overshoots and bounces back
                    say("bubli", "Oiii Sahib! Coming, coming!"); }],
-    [4000, () => { bubli.set("wave"); sahib.set("wave"); say("bubli", "Heyyy! Welcome to Ghulmil!"); }],
+    [3500, () => friends.forEach((m) => { m.set("idle", false); m.enter(); })],              // the others pop up between them
+    [4200, () => { everyone.forEach((m) => m.set("wave")); say("bubli", "Heyyy! Welcome to ghulmil!"); }],
     [5500, () => { root.classList.add("intro-copy"); }],                              // the headline rises in
     [7400, () => finish()],
   ];
-  const INTRO_POSES = [[sahib, "idle"], [sahib, "call"], [sahib, "shy"], [sahib, "wave"], [bubli, "talkSide"], [bubli, "wave"], [bubli, "idle"]];
+  const INTRO_POSES = [[sahib, "idle"], [sahib, "call"], [sahib, "thumbs"], [sahib, "wave"], [bubli, "talkSide"], [bubli, "wave"], [bubli, "idle"], ...friends.flatMap((m) => [[m, "idle"], [m, "wave"]])];
 
   let introTimers = [];
   const clearIntro = () => { introTimers.forEach(clearTimeout); introTimers = []; };
@@ -108,8 +114,7 @@
   function finish() {
     clearIntro();
     hush();
-    bubli.set("idle", false);
-    sahib.set("idle", false);
+    everyone.forEach((m) => m.set("idle", false));
     root.classList.remove("intro", "intro-copy");
     try { localStorage.setItem("ghulmil-intro", "1"); } catch (e) {}
   }
@@ -117,8 +122,7 @@
   async function playIntro() {
     clearIntro();
     hush();
-    bubli.leave();
-    sahib.leave();
+    everyone.forEach((m) => m.leave());
     root.classList.remove("intro-copy");
     root.classList.add("intro");
     // Wait for the pictures, but never hold the page for more than a moment.
@@ -146,8 +150,8 @@
     await Promise.all([preload("bubli", "wave"), preload("sahib", hisPose), preload("bubli", "laugh")]);
     clearIntro();
     introTimers.push(
-      setTimeout(() => { bubli.set("wave"); say("bubli", hers); }, 900),
-      setTimeout(() => { bubli.set("laugh"); sahib.set(hisPose); say("sahib", his); }, 3600),
+      setTimeout(() => { bubli.set("wave"); friends.forEach((m) => m.set("wave")); say("bubli", hers); }, 900),
+      setTimeout(() => { bubli.set("laugh"); friends.forEach((m) => m.set("idle")); sahib.set(hisPose); say("sahib", his); }, 3600),
       setTimeout(finish, 6600),
     );
   }
@@ -167,14 +171,15 @@
     setTimeout(() => { if (m.pose === "blink") m.set("idle", false); }, 170);
   };
   if (!reduced) {
-    preload("bubli", "blink");
-    preload("sahib", "blink");
+    everyone.forEach((m) => preload(m.who, "blink"));
     const loop = (m, first) => setTimeout(() => {
       if (!document.hidden && !root.classList.contains("paused") && !root.classList.contains("intro")) blink(m);
       loop(m, 2600 + Math.random() * 3200);
     }, first);
     loop(sahib, 2200);
     loop(bubli, 3600);
+    loop(friends[0], 2900);
+    loop(friends[1], 4300);
   }
 
   // =====================================================================
@@ -188,6 +193,7 @@
       this.swap = this.duo.classList.contains("swap");   // Sahib stands on the left here
       this.bubli = new Mascot(this.duo.querySelector('[data-who="bubli"]'));
       this.sahib = new Mascot(this.duo.querySelector('[data-who="sahib"]'));
+      this.friends = [...this.duo.querySelectorAll('[data-who="dipa"], [data-who="bumba"]')].map((el) => new Mascot(el));
       this.lines = [...el.querySelectorAll(".lines li")];
       this.shots = [...el.querySelectorAll(".device-screen img")];
       this.marks = [...el.querySelectorAll(".chips li, .cards li")];
@@ -198,24 +204,38 @@
       this.duo.append(this.bubble);
     }
     preload() {
-      this.lines.forEach((li) => { preload("bubli", li.dataset.b || "idle"); preload("sahib", li.dataset.s || "idle"); });
+      this.lines.forEach((li) => {
+        preload("bubli", li.dataset.b || "idle");
+        preload("sahib", li.dataset.s || "idle");
+        this.friends.forEach((m) => preload(m.who, li.dataset[m.who] || li.dataset.f || "idle"));
+      });
     }
     /** How long a line stays up: long enough to read it. */
     dur(k) { return 1700 + this.lines[k].textContent.length * 55; }
-    side(who) { return who === "both" ? "both" : (who === "bubli") !== this.swap ? "left" : "right"; }
+    side(who) {
+      if (who === "both") return "both";
+      if (who === "bumba") return "midleft";
+      if (who === "dipa") return "midright";
+      return (who === "bubli") !== this.swap ? "left" : "right";
+    }
     /** Put line k on: poses, bubble, and whatever it points at. */
     show(k) {
       const li = this.lines[k], who = li.dataset.who;
       if (k === 0) this.fx.forEach((f) => this.el.classList.remove("fx-" + f));
       this.bubli.set(li.dataset.b || "idle");
       this.sahib.set(li.dataset.s || "idle");
-      this.bubli.el.classList.toggle("speaking", who !== "sahib");
-      this.sahib.el.classList.toggle("speaking", who !== "bubli");
+      const all = who === "both";
+      this.bubli.el.classList.toggle("speaking", all || who === "bubli");
+      this.sahib.el.classList.toggle("speaking", all || who === "sahib");
+      this.friends.forEach((m) => {
+        m.set(li.dataset[m.who] || li.dataset.f || "idle");
+        m.el.classList.toggle("speaking", all || who === m.who);
+      });
       this.duo.classList.add("live");
       const b = this.bubble;
       b.classList.remove("on");
       void b.offsetWidth;
-      b.dataset.who = who === "sahib" ? "sahib" : "bubli";
+      b.dataset.who = all ? "bubli" : who;
       b.dataset.side = this.side(who);
       b.textContent = li.textContent;
       b.classList.add("on");
@@ -232,6 +252,7 @@
       this.sahib.set("idle", false);
       this.bubli.el.classList.remove("speaking");
       this.sahib.el.classList.remove("speaking");
+      this.friends.forEach((m) => { m.set("idle", false); m.el.classList.remove("speaking"); });
       this.marks.forEach((m) => m.classList.remove("on"));
     }
   }

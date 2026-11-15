@@ -106,68 +106,63 @@
 
 <main id="main">
 
-<!-- Scene 00: first impression. On a first visit Sahib and Bubli come on and greet you, then the words rise in. -->
+<!-- Scene 00: first impression. On a first visit the friends arrive and greet you, then the words rise in. -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <h1 class="rise" id="hero-title">Your people are <em>closer</em> than you think.</h1>
-      <p class="lede rise">Your next cricket match, chai walk, creative meetup or weekend adventure starts with people nearby.</p>
-      <div class="hero-actions rise">
-        <a class="pill" href="#get-app">Get the app</a>
-        <a class="pill pill-ghost" href="#about" data-tour>Show me around</a>
-      </div>
-      <p class="hero-note rise">Real people. Real plans. <span lang="hi-Latn">Saath chalein?</span></p>
+  <div class="hero-copy">
+    <h1 class="rise" id="hero-title">Your people are <em>closer</em> than you think.</h1>
+    <p class="lede rise">Your next cricket match, chai walk, creative meetup or weekend adventure starts with people nearby.</p>
+    <div class="hero-actions rise">
+      <a class="pill" href="#get-app">Get the app</a>
+      <a class="pill pill-ghost" href="#about" data-tour>Show me around</a>
     </div>
+    <p class="hero-note rise">Real people. Real plans. <span lang="hi-Latn">Saath chalein?</span></p>
+  </div>
 
-    <div class="stage-wrap">
-      <div class="stage" id="cast">
-        <div class="mascot" data-who="bubli"><div class="mascot-move">
-          <img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="Bubli, a girl in an orange jacket with a headband and jhumka earrings, smiling" fetchpriority="high">
-        </div></div>
-        <div class="mascot flip" data-who="sahib"><div class="mascot-move">
-          <img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="Sahib, a boy in an orange hoodie with a backpack, smiling" fetchpriority="high">
-        </div></div>
-        <!-- What they say. Filled in by story.js; the greeting is here so it reads without it. -->
-        <p class="bubble" id="bubble" data-who="bubli" data-side="left" lang="hi-Latn">Heyyy! Welcome to Ghulmil!</p>
-      </div>
-      <div class="stage-ctl">
-        <button class="text-btn motion-toggle" id="motion-toggle" type="button" aria-pressed="false">
-          <svg class="solid" viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="i-play" d="M8 5.5v13l10.5-6.5z"/></svg>
-          Pause animations
-        </button>
-        <button class="text-btn" id="intro-skip" type="button">Skip intro
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 8 7-8 7M14 5l8 7-8 7" transform="scale(.82) translate(1 2.6)"/></svg>
-        </button>
-        <button class="text-btn" id="intro-replay" type="button">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v4.5h4.5"/></svg>
-          Replay intro
-        </button>
-      </div>
-    </div>
+  <div class="cast" id="cast">
+    <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="Bubli, in an orange jacket with a headband and jhumka earrings, smiling" fetchpriority="high"></div></div>
+    <div class="mascot" data-who="bumba"><div class="mascot-move"><img src="mascots/bumba-01-idle-open.webp" width="659" height="560" alt="Bumba, in a yellow hoodie, smiling"></div></div>
+    <div class="mascot flip" data-who="dipa"><div class="mascot-move"><img src="mascots/dipa-01-idle-open.webp" width="613" height="560" alt="Dipa, with glasses and a green track jacket, smiling"></div></div>
+    <div class="mascot flip" data-who="sahib"><div class="mascot-move"><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="Sahib, in an orange hoodie with a backpack, smiling" fetchpriority="high"></div></div>
+    <!-- What they say. Filled in by story.js; the greeting is here so it reads without it. -->
+    <p class="bubble" id="bubble" data-who="bubli" data-side="left" lang="hi-Latn">Heyyy! Welcome to ghulmil!</p>
   </div>
 </section>
+<div class="stage-ctl">
+  <button class="text-btn motion-toggle" id="motion-toggle" type="button" aria-pressed="false">
+    <svg class="solid" viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="i-play" d="M8 5.5v13l10.5-6.5z"/></svg>
+    Pause animations
+  </button>
+  <button class="text-btn" id="intro-skip" type="button">Skip intro
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 8 7-8 7M14 5l8 7-8 7" transform="scale(.82) translate(1 2.6)"/></svg>
+  </button>
+  <button class="text-btn" id="intro-replay" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v4.5h4.5"/></svg>
+    Replay intro
+  </button>
+</div>
 
 <!--
   Scenes 01 to 07. Each has its words, a picture from the app, and a short exchange between Bubli and Sahib
   (ol.lines). story.js plays the lines one at a time in a speech bubble. On each line:
-    data-b / data-s  the pose Bubli / Sahib takes      data-shot  which phone picture to show
+    data-b / data-s / data-f  the pose Bubli / Sahib / the other friends take (data-dipa, data-bumba: just that one)
+        data-shot  which phone picture to show
     data-hl          which chips or cards to light up   data-fx    a one-off effect on the section
 -->
 <div class="content">
 
   <!-- Scene 01 -->
-  <section class="scene" id="about" data-scene="What is Ghulmil?" aria-labelledby="about-title">
+  <section class="scene" id="about" data-scene="What is ghulmil?" aria-labelledby="about-title">
     <div class="scene-copy reveal">
-      <p class="eyebrow">Meet Ghulmil</p>
+      <p class="eyebrow">Meet ghulmil</p>
       <h2 id="about-title">Less scrolling.<br><em>More showing up.</em></h2>
-      <p class="sub">Ghulmil brings people together through activities they actually want to do. Discover nearby plans, host your own, and turn shared interests into real connections.</p>
+      <p class="sub">ghulmil brings people together through activities they actually want to do. Discover nearby plans, host your own, and turn shared interests into real connections.</p>
       <a class="link-cta" href="#discover">Discover how it works <span aria-hidden="true">→</span></a>
       <div class="duo" aria-hidden="true">
         <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></div></div>
         <div class="mascot flip" data-who="sahib"><div class="mascot-move"><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="" loading="lazy"></div></div>
       </div>
       <ol class="lines" lang="hi-Latn">
-        <li data-who="bubli" data-b="talk" data-s="idle" data-shot="0">Toh suno! Ghulmil pe sirf chat nahi, asli plans bante hain!</li>
+        <li data-who="bubli" data-b="talk" data-s="idle" data-shot="0">Toh suno! ghulmil pe sirf chat nahi, asli plans bante hain!</li>
         <li data-who="sahib" data-b="idle" data-s="talkSide" data-shot="1">Matlab cricket, music, coffee... aur naye dost!</li>
         <li data-who="bubli" data-b="point" data-s="thumbs">Exactly! Chalo, main dikhati hoon!</li>
       </ol>
@@ -175,8 +170,8 @@
     <div class="scene-visual reveal">
       <div class="device peek">
         <div class="device-screen">
-          <img class="on" src="screens/home-top.webp" width="640" height="405" loading="lazy" alt="Ghulmil's Home screen: a search bar, activity kinds such as Entertainment and Outdoor, and day filters">
-          <img src="screens/explore-top.webp" width="640" height="405" loading="lazy" alt="Ghulmil's Explore screen with Quick match, Browse and Tolis tabs">
+          <img class="on" src="screens/home-top.webp" width="640" height="405" loading="lazy" alt="ghulmil's Home screen: a search bar, activity kinds such as Entertainment and Outdoor, and day filters">
+          <img src="screens/explore-top.webp" width="640" height="405" loading="lazy" alt="ghulmil's Explore screen with Quick match, Browse and Tolis tabs">
         </div>
       </div>
       <img class="kind float float-a" src="screens/kind-sports.webp" width="320" height="210" loading="lazy" alt="">
@@ -194,7 +189,7 @@
       <ul class="chips">
         <li>Quick Match</li><li>Browse activities</li><li>Search &amp; filters</li><li>Save for later</li>
       </ul>
-      <a class="link-cta to-store" href="#get-app">See activities in Ghulmil <span aria-hidden="true">→</span></a>
+      <a class="link-cta to-store" href="#get-app">See activities in ghulmil <span aria-hidden="true">→</span></a>
       <div class="duo" aria-hidden="true">
         <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></div></div>
         <div class="mascot flip" data-who="sahib"><div class="mascot-move"><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="" loading="lazy"></div></div>
@@ -209,7 +204,7 @@
     <div class="scene-visual warm reveal">
       <div class="device peek">
         <div class="device-screen">
-          <img class="on" src="screens/explore-top.webp" width="640" height="405" loading="lazy" alt="Explore in Ghulmil: search by activity, or switch between Quick match, Browse and Tolis">
+          <img class="on" src="screens/explore-top.webp" width="640" height="405" loading="lazy" alt="Explore in ghulmil: search by activity, or switch between Quick match, Browse and Tolis">
         </div>
       </div>
       <div class="kinds">
@@ -245,7 +240,7 @@
       <ol class="lines" lang="hi-Latn">
         <li data-who="bubli" data-b="talk" data-s="idle" data-shot="0" data-hl="0">Kuch mila nahi? Toh apna plan bana lo!</li>
         <li data-who="sahib" data-b="idle" data-s="curious" data-shot="1" data-hl="1">Main bhi join kar sakta hoon?</li>
-        <li data-who="bubli" data-b="tease" data-s="oops" data-shot="2" data-hl="2">Bilkul! Bas tum late mat hona!</li>
+        <li data-who="bubli" data-b="laugh" data-s="thumbs" data-shot="2" data-hl="2">Bilkul! Bas tum late mat hona!</li>
         <li data-who="bubli" data-b="talkSide" data-s="curious" data-shot="3" data-hl="3">Ek plan toh ho gaya... par baar-baar milna ho toh?</li>
       </ol>
     </div>
@@ -271,20 +266,24 @@
         <li>Shared interests</li><li>Familiar faces</li><li>Regular plans</li><li>Community</li>
       </ul>
       <a class="link-cta to-store" href="#get-app">Meet Tolis <span aria-hidden="true">→</span></a>
-      <div class="duo" aria-hidden="true">
+      <div class="duo four" aria-hidden="true">
         <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></div></div>
+        <div class="mascot" data-who="bumba"><div class="mascot-move"><img src="mascots/bumba-01-idle-open.webp" width="659" height="560" alt="" loading="lazy"></div></div>
+        <div class="mascot flip" data-who="dipa"><div class="mascot-move"><img src="mascots/dipa-01-idle-open.webp" width="613" height="560" alt="" loading="lazy"></div></div>
         <div class="mascot flip" data-who="sahib"><div class="mascot-move"><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="" loading="lazy"></div></div>
       </div>
       <ol class="lines" lang="hi-Latn">
-        <li data-who="bubli" data-b="tease" data-s="idle" data-hl="0">Sahib, pata hai sabse achhi cheez kya hai?</li>
-        <li data-who="sahib" data-b="tease" data-s="curious">Kya?</li>
-        <li data-who="bubli" data-b="talkSide" data-s="shy" data-hl="1" data-fx="gather">Jab naye log apne ban jaate hain!</li>
-        <li data-who="sahib" data-b="laugh" data-s="thumbs" data-hl="2,3">That's your Toli!</li>
+        <li data-who="bubli" data-b="talkSide" data-s="idle" data-hl="0">Sahib, pata hai sabse achhi cheez kya hai?</li>
+        <li data-who="sahib" data-b="idle" data-s="curious">Kya?</li>
+        <li data-who="bubli" data-b="talk" data-s="wow" data-hl="1" data-fx="gather">Jab naye log apne ban jaate hain!</li>
+        <li data-who="bumba" data-b="idle" data-s="idle" data-bumba="talkSide" data-hl="0">Jaise hum! Ek cricket match pe mile the.</li>
+        <li data-who="dipa" data-b="laugh" data-s="idle" data-dipa="talkSide" data-hl="2">Aur ab har Sunday ka plan fix hai!</li>
+        <li data-who="sahib" data-b="laugh" data-s="thumbs" data-f="wave" data-hl="3">That's your Toli!</li>
       </ol>
     </div>
     <div class="scene-visual warm reveal">
       <div class="toli">
-        <ul class="people" aria-hidden="true"><li>A</li><li>R</li><li>M</li><li>S</li><li>K</li><li>P</li></ul>
+        <ul class="people" aria-hidden="true"><li><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></li><li><img src="mascots/bumba-01-idle-open.webp" width="659" height="560" alt="" loading="lazy"></li><li><img src="mascots/dipa-01-idle-open.webp" width="613" height="560" alt="" loading="lazy"></li><li><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="" loading="lazy"></li></ul>
         <h3>A Toli is your regular crew</h3>
         <p>People who liked the same plan, meeting again and again.</p>
         <ul class="week" aria-hidden="true"><li>M</li><li>T</li><li>W</li><li>T</li><li>F</li><li>S</li><li class="meet">S</li></ul>
@@ -309,7 +308,7 @@
       </div>
       <ol class="lines" lang="hi-Latn">
         <li data-who="sahib" data-b="idle" data-s="phone" data-shot="0" data-hl="0,1">Bubli, kal wala plan yaad hai na?</li>
-        <li data-who="bubli" data-b="talkSide" data-s="phone" data-shot="1" data-hl="2">Of course! Ghulmil ke Plans mein saved hai!</li>
+        <li data-who="bubli" data-b="talkSide" data-s="phone" data-shot="1" data-hl="2">Of course! ghulmil ke Plans mein saved hai!</li>
         <li data-who="sahib" data-b="laugh" data-s="phew" data-shot="2" data-hl="3">Good. Main almost bhool gaya tha!</li>
       </ol>
     </div>
@@ -329,7 +328,7 @@
     <div class="scene-copy reveal">
       <p class="eyebrow">Meet with more confidence</p>
       <h2 id="safety-title">Real people. <em>Thoughtful safeguards.</em></h2>
-      <p class="sub">Ghulmil provides verification, host controls and reporting tools to support safer activity experiences.</p>
+      <p class="sub">ghulmil provides verification, host controls and reporting tools to support safer activity experiences.</p>
       <a class="link-cta" href="guidelines">Learn about safety <span aria-hidden="true">→</span></a>
       <div class="duo" aria-hidden="true">
         <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></div></div>
@@ -344,7 +343,7 @@
     <div class="scene-visual reveal">
       <div class="device dark peek">
         <div class="device-screen" style="aspect-ratio: 640 / 620">
-          <img class="on" src="screens/verified.webp" width="640" height="620" loading="lazy" alt="Get verified in Ghulmil: a profile selfie and a confirmed email earn the blue tick">
+          <img class="on" src="screens/verified.webp" width="640" height="620" loading="lazy" alt="Get verified in ghulmil: a profile selfie and a confirmed email earn the blue tick">
         </div>
       </div>
     </div>
@@ -352,7 +351,7 @@
       <li class="reveal"><b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></b><h3>Verified profiles</h3><p>Blue ticks indicate selfie and email verification.</p></li>
       <li class="reveal"><b aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6 1.6 0 3 .4 4.100 1.200M15 17.500l2.200 2.200L21.500 15"/></svg></b><h3>Host approvals</h3><p>Hosts decide who joins their plans.</p></li>
       <li class="reveal"><b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 21V4M6 5h11l-2.500 4L17 13H6"/></svg></b><h3>Report and block</h3><p>Tools for reporting or blocking other users.</p></li>
-      <li class="reveal"><b aria-hidden="true">18+</b><h3>Adults only</h3><p>Ghulmil is for people aged 18 and over.</p></li>
+      <li class="reveal"><b aria-hidden="true">18+</b><h3>Adults only</h3><p>ghulmil is for people aged 18 and over.</p></li>
     </ul>
   </section>
 
@@ -363,25 +362,29 @@
       <p class="eyebrow">Your next plan starts here</p>
       <h2 id="get-app-title" lang="hi-Latn">Saath <em>chalein?</em></h2>
       <p class="sub">Discover plans, bring people together, and make more moments worth remembering.</p>
-      <a class="store" id="store-btn" aria-label="Get Ghulmil on Google Play">
+      <a class="store" id="store-btn" aria-label="Get ghulmil on Google Play">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.720l-14-8.500A1 1 0 0 0 6 3.500Z"/></svg>
-        <span><small id="store-label">Get Ghulmil on</small><strong>Google Play</strong></span>
+        <span><small id="store-label">Get ghulmil on</small><strong>Google Play</strong></span>
       </a>
       <a class="link-cta" href="#about" data-tour>Explore the features again <span aria-hidden="true">→</span></a>
-      <div class="duo" aria-hidden="true">
+      <div class="duo four" aria-hidden="true">
         <div class="mascot" data-who="bubli"><div class="mascot-move"><img src="mascots/bubli-01-idle-open.webp" width="673" height="560" alt="" loading="lazy"></div></div>
+        <div class="mascot" data-who="bumba"><div class="mascot-move"><img src="mascots/bumba-01-idle-open.webp" width="659" height="560" alt="" loading="lazy"></div></div>
+        <div class="mascot flip" data-who="dipa"><div class="mascot-move"><img src="mascots/dipa-01-idle-open.webp" width="613" height="560" alt="" loading="lazy"></div></div>
         <div class="mascot flip" data-who="sahib"><div class="mascot-move"><img src="mascots/sahib-01-idle-open.webp" width="825" height="560" alt="" loading="lazy"></div></div>
       </div>
       <ol class="lines" lang="hi-Latn">
         <li data-who="bubli" data-b="talk" data-s="idle">Toh, ready ho apni Toli dhoondhne ke liye?</li>
-        <li data-who="sahib" data-b="laugh" data-s="cheer">Let's gooo!</li>
-        <li data-who="both" data-b="cheer" data-s="cheer" data-fx="cheer">Saath chalein!</li>
+        <li data-who="bumba" data-b="idle" data-s="idle" data-bumba="talkSide">Main toh kab se ready hoon!</li>
+        <li data-who="dipa" data-b="laugh" data-s="idle" data-dipa="talkSide">Chalo, der mat karo!</li>
+        <li data-who="sahib" data-b="laugh" data-s="cheer" data-f="wave">Let's gooo!</li>
+        <li data-who="both" data-b="cheer" data-s="cheer" data-f="cheer" data-fx="cheer">Saath chalein!</li>
       </ol>
     </div>
     <div class="scene-visual reveal">
       <div class="device dark peek">
         <div class="device-screen">
-          <img class="on" src="screens/signin-dark.webp" width="640" height="717" loading="lazy" alt="Ghulmil's sign-in screen: Chalo, milte hain. Join a plan nearby, or start your own.">
+          <img class="on" src="screens/signin-dark.webp" width="640" height="717" loading="lazy" alt="ghulmil's sign-in screen: Chalo, milte hain. Join a plan nearby, or start your own.">
         </div>
       </div>
     </div>

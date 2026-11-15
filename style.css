@@ -1,17 +1,17 @@
 /* Fonts are self-hosted (fonts/): no extra connections to Google, and the
-   files are trimmed to the weights the site uses (Latin, 400-600). OFL licensed. */
+   files are trimmed to what the site uses (Latin). OFL licensed.
+   Bricolage Grotesque 800 is the app's heading font. */
 @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/dm-sans.woff2") format("woff2"); }
-@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/fraunces.woff2") format("woff2"); }
-@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 400 500; font-display: swap; src: url("fonts/fraunces-italic.woff2") format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 800; font-display: swap; src: url("fonts/bricolage-800.woff2") format("woff2"); }
 
-/* Shared styles for the Ghulmil public pages. Colours match the app. */
+/* Shared styles for the ghulmil public pages: white ground, navy type, blue links, as on the home page and in the app. */
 :root {
-  --bg: #fcf0da;
-  --ink: #1e1813;
-  --muted: rgba(30, 24, 19, 0.66);
-  --body: rgba(30, 24, 19, 0.8);
-  --rule: rgba(30, 24, 19, 0.14);
-  --accent: #b33a0a; /* 5.3:1 on --bg: WCAG AA for body-size links */
+  --bg: #ffffff;
+  --ink: #111629;
+  --muted: rgba(17, 22, 41, 0.66);
+  --body: rgba(17, 22, 41, 0.8);
+  --rule: rgba(17, 22, 41, 0.13);
+  --accent: #1550e0; /* 6.7:1 on white: WCAG AA for body-size links */
   color-scheme: light;
 }
 
@@ -33,15 +33,15 @@ main {
 }
 
 .brand {
-  font: 600 24px/1 "Fraunces", Georgia, serif;
+  font: 800 24px/1 "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
   letter-spacing: -0.03em;
   color: var(--ink);
   text-decoration: none;
 }
 
 h1, h2 {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
+  font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  font-weight: 800;
   color: var(--ink);
   letter-spacing: -0.02em;
 }
@@ -60,7 +60,7 @@ ul { margin: 0 0 12px; padding-left: 22px; }
 li { margin-bottom: 6px; }
 strong { color: var(--ink); font-weight: 600; }
 a { color: var(--accent); text-underline-offset: 2px; overflow-wrap: anywhere; }
-a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 .links { list-style: none; padding: 0; margin-top: 28px; }
 .links li { margin-bottom: 10px; }
@@ -75,4 +75,4 @@ details > p, details > ul { margin: 8px 0 4px 18px; }
 
 footer { margin-top: 48px; font-size: 13px; color: var(--muted); }
 
-.brand::after { content: "."; color: #f2601c; }
+.brand::after { content: "."; color: #ff5a1f; }

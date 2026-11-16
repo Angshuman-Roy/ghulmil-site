@@ -80,9 +80,11 @@
       such as plans posted, requests approved and check-ins, to see how ghulmil is doing.</p>
     <p>We don't collect your contacts, your location in the background when the app is closed, or any advertising
       identifiers.</p>
-    <p><strong>Our website.</strong> To count visits to ghulmil.app, we use Cloudflare Web Analytics. It records which
-      pages are viewed, the referring site, and the general type of browser, device and country. It uses no cookies,
-      doesn't track you across other websites, and doesn't identify you.</p>
+    <p><strong>Our website.</strong> To understand how ghulmil.app is used, we use Cloudflare Web Analytics and
+      PostHog. They record which pages are viewed, how long you stay and how far you scroll, which links and buttons you
+      click, the referring site, and the general type of browser, device and country. They use no cookies, store
+      nothing on your device, don't track you across other websites, and don't identify you. If your browser sends a
+      "Do Not Track" signal, PostHog records nothing.</p>
   </section>
 
   <section>
@@ -132,7 +134,7 @@
         Notification service</strong> (iOS), to deliver notifications to your phone. They receive the notification's
         text and your phone's notification token.</li>
       <li><strong>PostHog</strong>, for usage data as described above. It's stored in the United States. You can turn it
-        off in Settings.</li>
+        off in Settings. We also use it to measure visits to our website.</li>
       <li><strong>Cloudflare</strong>, to count visits to our website, as described above.</li>
     </ul>
     <p><strong>Support.</strong> When you report a problem, a small number of ghulmil team members can look at your
@@ -210,5 +212,6 @@
   <footer>© 2026 ghulmil · <a href="https://www.instagram.com/ghulmilapp/" rel="me noopener" target="_blank">Instagram</a></footer>
 </main>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "36fcd78078244037b02cb5e4399aec77"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="analytics.js" defer></script>
 </body>
 </html>
